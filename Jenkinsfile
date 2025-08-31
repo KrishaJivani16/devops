@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Starting web server...'
                 sh '''
-                cd $WORKSPACE
+                cd "$WORKSPACE"
                 nohup python3 -m http.server 8000 &
                 '''
             }
