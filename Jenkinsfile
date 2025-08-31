@@ -4,9 +4,11 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                echo 'Deploying the static HTML file...'
-                // Command to copy the file to a web server directory
-                sh 'cp index.html /var/www/html/' 
+                echo 'Starting web server...'
+                sh '''
+                cd $WORKSPACE
+                nohup python3 -m http.server 8000 &
+                '''
             }
         }
     }
